@@ -36,15 +36,15 @@ for i1 in b:
         b_itog.append(i1)
     count = 0
 
-d_max = -1
+d_max = 5000
 for i2 in b_itog:
-    if int(i2,16) > d_max:
+    if int(i2,16) < d_max:
         d_max = int(i2,16)
         d__max = i2
 
 for i3 in b_itog:
     print(i3,end='\n')
 print()
-print(f'Максимальное число:{d__max}')
+print(f'Минимальное число:{d__max}')
 for ii in d__max:
     print(slovar[ii])
