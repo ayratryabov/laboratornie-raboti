@@ -46,6 +46,7 @@ for i2 in b_itog:
 
 for i3 in b_itog:
     print(i3,end='\n')
+print(f'Количество чисел:{len(b_itog)}')
 print()
 print(f'Минимальное число:{d__max}')
 for ii in d__max:
