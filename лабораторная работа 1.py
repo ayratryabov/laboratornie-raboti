@@ -36,7 +36,8 @@ for i1 in b:
     if count > k and int(i1,16) < 4096 and int(i1,16)%2 !=0:
         b_itog.append(i1)
     count = 0
-
+if len(b_itog) == 0:
+    print('В файле нет подходящих чисел')
 d_max = 5000
 for i2 in b_itog:
     if int(i2,16) < d_max:
