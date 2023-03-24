@@ -113,7 +113,7 @@ for e in range(n):
 print()
 print('Конечное выражение :((К*AT)*А)-K*FT):')
 for __ in result_matrix:
-    print(__,end='\n')
+    print(*__,end='\n')
 
 
 
