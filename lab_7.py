@@ -13,6 +13,8 @@ class All_elem_kostums:
         self.black = self.lot //3 
         self.blue = (self.lot - self.black)//2 #2
         self.white = (self.lot - self.black)-self.blue
+        if self.lot == 0:
+            self.LIST.append(f'{self.n} отсутвтвует')
         if self.qw == 1:
             if self.lot == 1 or self.lot == 2:
                 self.LIST.append(f"{self.n}1")
