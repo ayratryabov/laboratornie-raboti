@@ -5,7 +5,7 @@ from random import *
 
 window = Tk()
 window.title("Лабораторная работа 8")
-window.geometry('700x600')
+window.geometry('800x600')
 label_1 = Label(window,text = 'Введите количество вещей').place(x=280,y=10)
 label_2 = Label(window,text = 'Пиджаков:').place(x=30,y=45)
 label_3 = Label(window,text = 'Галстуков:').place(x=200,y=45)
@@ -18,7 +18,7 @@ label_9 = Label(window,text = 'Пиджаков:').place(x=30,y=175)
 label_10 = Label(window,text = 'Галстуков:').place(x=200,y=175)
 label_11 = Label(window,text = 'Рубашек:').place(x=370,y=175)
 label_12 = Label(window,text = 'Брюк:').place(x=540,y=175)
-output_text = scrolledtext.ScrolledText(window,height=10, width=75)
+output_text = scrolledtext.ScrolledText(window,height=10, width=90)
 output_text.place(x=50,y=300)
 entry_bruk = Entry(window).place(x=540,y=70)
 entry_bruk_qw = Entry(window).place(x=540,y=200)
@@ -45,7 +45,7 @@ def jacket():
     blue_jak = (int(p.get()) - black_jak)//2 #2
     white_jak = (int(p.get()) - black_jak)-blue_jak  #3
     if int(p.get()) == 0:
-        P.append('Пиджаков нет')
+        return P.append('Пиджаков нет')
     if int(quest_P.get()) == 1:
         for i in range(1,black_jak+1):
             P.append(f'Пиджак{i}')
@@ -53,19 +53,24 @@ def jacket():
             P.append(f"Пиджак1")
     elif int(quest_P.get())== 2:
         if int(p.get()) == 1:
-            P.append('Cиний пиджак отсутствует')
+            P.append('Пиджак1')
         if int(p.get()) == 2:
-            P.append('Пиджак 2')
+            P.append('Пиджак2')
         else:
             for i in range(black_jak+1,(black_jak+blue_jak)+1):
                 P.append(f'Пиджак{i}')
         
     elif int(quest_P.get()) == 3:
         if int(p.get()) == 1 or int(p.get()) == 2:
-            P.append('Белый пиджак отсутствует')
+            P.append('Пиджак1 ')
         else:
             for i in range((black_jak+blue_jak)+1,black_jak+blue_jak+white_jak+1):
-                P.append(f'Пиджак{i}')
+                P.append(f'Пиджак{i} ')
+
+    fasons = ['Классический ','Спортивный ','Френч ','Блейзер ','Смокинг ']
+    for i in range(len(P)):
+        P[i] = choice(fasons) + P[i]
+
 def galst():
     if int(quest_G.get()) == 0 or int(quest_P.get()) > 3:
         return output_text.insert(INSERT,'Вы ввели некоррекную цифру цвета галстука ')
@@ -74,27 +79,33 @@ def galst():
     blue_tie = (int(g.get()) - black_tie)//2 #2
     white_tie = (int(g.get()) - black_tie)-blue_tie  #3
     if int(g.get()) == 0:
-        G.append('Галстуков нет')
+        return G.append('Галстуков нет')
     if int(quest_G.get()) == 1:
         for i in range(1,black_tie+1):
-            G.append(f'Галстук{i}')
+            G.append(f'Галстук{i}   ')
         if int(g.get()) == 1 or int(g.get()) == 2:
             G.append(f"Галстук1")
     elif int(quest_G.get()) == 2:
         if int(g.get()) == 1:
-            G.append('Cиний галстук отсутствует')
+            G.append('Галстук1')
         if int(g.get()) == 2:
-            G.append('Галстук 2')
+            G.append('Галстук2')
         else:
             for i in range(black_tie+1,(black_tie+blue_tie)+1):
                 G.append(f'Галстук{i}')
             
     elif int(quest_G.get()) == 3:
         if int(g.get()) == 1 or int(g.get()) == 2:
-            G.append('Белый галстук отсутствует')
+            G.append('Галстук1')
         else:
             for i in range((black_tie+blue_tie)+1,black_tie+blue_tie+white_tie+1):
                 G.append(f'Галстук{i}')
+    fasons = ['Бабочка-','Техасский-','Лаварьер-','Регат-','Скинни-', 'Платок-']
+    knots = ['Бальтус-узел: ','Виктория-узел: ','Восточный узел: ','Двойной узел: ','Диагональный узел: ','Кент-узел: ','крестовый узел: ','Манхэттен-узел: ','Никки-узел: ','Простой узел: ']
+    for i in range(len(G)):
+        G[i] = choice(fasons) + G[i]
+    for i in range(len(G)):
+        G[i] = choice(knots) + G[i]
 def rub():
     if int(quest_R.get()) == 0 or int(quest_P.get()) > 3:
         return output_text.insert(INSERT,'Вы ввели некоррекную цифру цвета рубашек ' )
@@ -102,7 +113,7 @@ def rub():
     blue_t = (int(r.get()) - black_t)//2 #2
     white_t = (int(r.get()) - black_t)-blue_t  #3
     if int(r.get()) == 0:
-        R.append('Рубашек нет')
+        return R.append('Рубашек нет')
     if int(quest_R.get()) == 1:
         for i in range(1,black_t+1):
             R.append(f'Рубашка{i}')
@@ -110,20 +121,22 @@ def rub():
             R.append(f"Рубашка1")
     elif int(quest_R.get()) == 2:
         if int(r.get()) == 1:
-            R.append('Cиняя рубашка отсутствуют')
+            R.append('Рубашка1')
         if int(r.get()) == 2:
-            R.append('Рубашка 2')
+            R.append('Рубашка2')
         else:
             for i in range(black_t+1,(black_t+blue_t)+1):
-                R.append(f'Рубашка{i}')
+                R.append(f'Рубашка{i} ')
     elif int(quest_R.get()) == 3:
         if int(r.get()) == 1 or int(r.get()) == 2:
-            R.append('Белая рубашка отсутствуют')
+            R.append('Рубашка1')
         else:
             for i in range((black_t+blue_t)+1,black_t+blue_t+white_t+1):
                 R.append(f'Рубашка{i}')
-    
- 
+    fasons = ['Свободного фасона ','Классического фасона ','Приталенного фасона ','Современного фасона ']
+    for i in range(len(R)):
+        R[i] = choice(fasons) + R[i]
+
 def bruk():
     if int(quest_R.get()) == 0 or int(quest_P.get()) > 3:
         return output_text.insert(INSERT,'Вы ввели некоррекную цифру цвета брюк ')
@@ -131,7 +144,7 @@ def bruk():
     blue_t = (int(b.get()) - black_t)//2 #2
     white_t = (int(b.get()) - black_t)-blue_t  #3
     if int(b.get()) == 0:
-        B.append('Брюк нет')
+        return B.append('Брюк нет')
     if int(quest_B.get()) == 1:
         for i in range(1,black_t+1):
             B.append(f'Брюки{i}')
@@ -139,18 +152,22 @@ def bruk():
             B.append(f"Брюки1")
     elif int(quest_B.get()) == 2:
         if int(b.get()) == 1:
-            B.append('Cиние брюки отсутствуют')
+            B.append('Брюки1')
         if int(b.get()) == 2:
-            B.append('Брюки 2')
+            B.append('Брюки2')
         else:
             for i in range(black_t+1,(black_t+blue_t)+1):
                 B.append(f'Брюки{i}')
     elif int(quest_B.get()) == 3:
         if int(b.get()) == 1 or int(b.get()) == 2:
-            B.append('Белые брюки отсутствуют')
+            B.append('Брюки1')
         else:
             for i in range((black_t+blue_t)+1,black_t+blue_t+white_t+1):
                 B.append(f'Брюки{i}')
+    fasons = ['Классические ','Чинос ','Карго ','Джлггеры ','Бананы ','Скинни ']
+    for i in range(len(B)):
+        B[i] = choice(fasons) + B[i]
+
 kost_ob = []
  
 def result():
@@ -172,10 +189,10 @@ def price():
     count = 0
     for i in kost_ob:
         for j in i:
-            if j[-1].isdigit() == True:
-                if 1<=int(j[-1])<=5:
+            if j.rstrip()[-1].isdigit() == True:
+                if 1<=int(j.rstrip()[-1])<=5:
                     count += randint(5,15)
-                elif 5<=int(j[-1])<=15:
+                elif 5<=int(j.rstrip()[-1])<=15:
                     count += randint(15,25)
                 else:
                     count += randint(25,50)
@@ -187,8 +204,20 @@ def price():
     res  = '\n'.join(map(str,kost_ob))
     return output_text.insert(INSERT,res)
 
+def zero():
+    global P
+    global G
+    global R
+    global B
+    global kost_ob
+    P = []
+    G = []
+    R = []
+    B = []
+    kost_ob = []
+
 button = Button(window,text='Поиск',command=lambda:[jacket(),galst(),rub(),bruk()
-    ,result(),price()]).place(x=280,y=250)
+    ,result(),price(),zero()]).place(x=280,y=250)
 entry_pidj = Entry(window,textvariable=p).place(x=30,y=70)
 entry_pidj_qw = Entry(window,textvariable=quest_P).place(x=30,y=200)
 entry_gals = Entry(window,textvariable=g).place(x=200,y=70)
