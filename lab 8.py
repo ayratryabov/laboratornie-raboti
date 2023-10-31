@@ -215,8 +215,10 @@ def zero():
     R = []
     B = []
     kost_ob = []
-
-button = Button(window,text='Поиск',command=lambda:[jacket(),galst(),rub(),bruk()
+def zero1():
+    output_text.delete(1.0,END)
+      
+button = Button(window,text='Поиск',command=lambda:[zero1(),jacket(),galst(),rub(),bruk()
     ,result(),price(),zero()]).place(x=280,y=250)
 entry_pidj = Entry(window,textvariable=p).place(x=30,y=70)
 entry_pidj_qw = Entry(window,textvariable=quest_P).place(x=30,y=200)
